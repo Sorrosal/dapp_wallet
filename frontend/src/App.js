@@ -1,8 +1,12 @@
 import "./App.css";
 import { useState } from "react";
-import logo from "./logo.png";
+import logo from "./logo.jpg";
 import { Select } from "antd";
 import { Routes, Route } from "react-router-dom";
+import {WalletView} from "./components/WalletView";
+import {Home} from "./components/Home";
+import {RecoverAccount} from "./components/RecoverAccount";
+import {CreateAccount} from "./components/CreateAccount";
 
 const App = () => {
   const [wallet, setWallet] = useState(null);
@@ -33,7 +37,46 @@ const App = () => {
           className="dropwdown"
         ></Select>
       </header>
+      
+      {wallet && seedPhrase ? (
+        <Routes>
+          <Route
+            path="/yourWallet"
+            element={
+              <WalletView
+                wallet={wallet}
+                setWallet={setWallet}
+                seedPhrase={seedPhrase}
+                setSeedPhrase={setSeedPhrase}
+                selectedChain={selectedChain}
+                />
+            }
+            />
+        </Routes>
 
+      ) : (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/recover"
+            element={
+              <RecoverAccount
+                setSeedPhrase={setSeedPhrase}
+                setWallet={setWallet}
+                />
+            }
+            />
+            <Route
+              path="/yourWallet"
+              element={
+                <CreateAccount
+                  setSeedPhrase={setSeedPhrase}
+                  setWallet={setWallet}
+                  />
+              }
+              />
+        </Routes>
+      )}
 
     </div>
 
