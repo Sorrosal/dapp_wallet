@@ -11,7 +11,7 @@ import {
 } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import logo from "../logo.jpg";
+import logo from "../link.png";
 import axios from "axios";
 
 import { ethers } from "ethers";

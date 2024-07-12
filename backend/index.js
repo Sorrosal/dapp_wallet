@@ -16,13 +16,15 @@ app.get("/getTokens", async (req, res) => {
         address: userAddress
     });
 
+    console.log(tokens);
+
     const nfts = await Moralis.EvmApi.nft.getWalletNFTs({
         chain: chain,
         address: userAddress,
         mediaItems: true
     });
 
-    const myNfts = nfts.raw.results.map((e,i) => {
+    const myNfts = nfts.raw.result.map((e,i) => {
         if(e?.media?.media_collection?.high?.url && !e.possible_spam && e?.media?.category !== "video") {
             return e["media"]["media_collection"]["high"]["url"];
         }

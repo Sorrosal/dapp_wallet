@@ -15,7 +15,7 @@ export const CreateAccount = ({ setWallet, setSeedPhrase }) => {
   }
 
   function setWalletAndMnemonic() {
-    setNewSeedPhrase(newSeedPhrase);
+    setSeedPhrase(newSeedPhrase);
     setWallet(ethers.Wallet.fromPhrase(newSeedPhrase).address);
   }
   return (
@@ -45,7 +45,7 @@ export const CreateAccount = ({ setWallet, setSeedPhrase }) => {
         type='default'
         onClick={() => setWalletAndMnemonic()}
       >
-        Create your new wallet
+        Login to your new wallet
       </Button>
       <p className='frontPageBottom' onClick={() => navigate("/")}>
         Back
