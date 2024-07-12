@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import { Button, Card } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { ethers } from "ethers";
 
 export const CreateAccount = ({ setWallet, setSeedPhrase }) => {
@@ -10,6 +10,7 @@ export const CreateAccount = ({ setWallet, setSeedPhrase }) => {
   const navigate = useNavigate();
 
   function generateWallet() {
+    console.log('test');
     const mnemonic = ethers.Wallet.createRandom().mnemonic.phrase;
     setNewSeedPhrase(mnemonic);
   }
